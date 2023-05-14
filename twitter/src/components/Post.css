@@ -1,0 +1,12 @@
+.post{
+    overflow-y: scroll;
+    min-width: fit-content;
+
+}
+.post::-webkit-scrollbar{
+    display: none;
+}
+
+.text{
+    padding-top: 30px;
+}
