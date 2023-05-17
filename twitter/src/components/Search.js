@@ -1,13 +1,10 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+
 export default function Search({ children }) {
   return (
-    <Grid
-      item
-      xs={4}
-      style={{ backgroundColor: "aqua", display: "flex", overflow: "auto" }}
-    >
+    <div style={{ position: "fixed", width: "100%" }}>
       <Card
         style={{
           border: "10px solid rgba(10, 20, 40, 0.05)",
@@ -16,6 +13,6 @@ export default function Search({ children }) {
       >
         {children}
       </Card>
-    </Grid>
+    </div>
   );
 }

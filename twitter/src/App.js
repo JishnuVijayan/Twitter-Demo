@@ -8,11 +8,14 @@ import Bookmarks from "./Pages/Bookmarks/Bookmarks";
 import Lists from "./Pages/Lists/Lists";
 import Profile from "./Pages/Profile/Profile";
 import More from "./Pages/More/More";
+import "./App.css";
+import Login from "./Pages/Login/Login";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
+      <Route path="/" element={<Login />} />
+      <Route path="/home" element={<Home />} />
       <Route path="explore" element={<Explore />} />
       <Route path="notifications" element={<Notifications />} />
       <Route path="messages" element={<Messages />} />

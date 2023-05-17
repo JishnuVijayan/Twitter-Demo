@@ -2,15 +2,24 @@ import Grid from "@mui/material/Grid";
 import Drawer from "../../components/Drawer";
 import Posts from "../../components/Posts";
 import Search from "../../components/Search";
-import "./Home.css";
+
 
 function App() {
   return (
-    <Grid className=".home" container>
-      <Drawer />
-      <Posts />
-      <Search>Hello World!</Search>
-    </Grid>
+    <div>
+      <Grid container>
+        <Grid item xs={3}>
+          <Drawer />
+        </Grid>
+
+        <Grid item xs={5}>
+          <Posts />
+        </Grid>
+        <Grid item xs={4}>
+          <Search></Search>
+        </Grid>
+      </Grid>
+    </div>
   );
 }
 

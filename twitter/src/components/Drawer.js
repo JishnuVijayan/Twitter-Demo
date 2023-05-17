@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import TagIcon from "@mui/icons-material/Tag";
@@ -16,6 +16,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import ListItemButton from "@mui/material/ListItemButton";
 import { useNavigate, useLocation } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export default function Drawer() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function Drawer() {
       id: 1,
       title: "Home",
       icons: <HomeIcon />,
-      color: location.pathname === "/" ? "#26a7de" : "#000",
+      color: location.pathname.includes("/home") ? "#26a7de" : "#000",
       onClick: () => navigate("/"),
     },
     {
@@ -72,10 +73,6 @@ export default function Drawer() {
           style={{
             width: 25,
             height: 25,
-            margin: -0,
-            marginTop: 2,
-            marginBottom: -6,
-            stroke: "black",
             strokewidth: 3,
           }}
           src={require("../assets/image2.jpg")}
@@ -91,10 +88,16 @@ export default function Drawer() {
       color: location.pathname.includes("more") ? "#26a7de" : "#000",
       onClick: () => navigate("/more"),
     },
+    {
+      id: 9,
+      title: "Logout",
+      icons: <LogoutIcon />,
+      onClick: () => navigate("/"),
+    },
   ]);
 
   return (
-    <Grid item xs={3}>
+    <div style={{ position: "fixed" }}>
       <TwitterIcon style={{ color: "#26a7de", margin: 20 }}></TwitterIcon>
       <List>
         {listItems.map((item) => (
@@ -122,24 +125,21 @@ export default function Drawer() {
           </ListItem>
         ))}
       </List>
-
-      <Button
-        style={{
-          borderRadius: 25,
-          width: 250,
-          height: 45,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: 30,
-          textTransform: "none",
-          fontWeight: 700,
-          letterSpacing: 1.5,
-        }}
-        variant="contained"
-      >
-        Tweet
-      </Button>
-    </Grid>
+      <div style={{ padding: 40 }}>
+        <Button
+          style={{
+            borderRadius: 25,
+            width: 250,
+            height: 45,
+            textTransform: "none",
+            fontWeight: 700,
+            letterSpacing: 1.5,
+          }}
+          variant="contained"
+        >
+          Tweet
+        </Button>
+      </div>
+    </div>
   );
 }
