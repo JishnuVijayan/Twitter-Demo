@@ -23,44 +23,60 @@ import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import Avatar from "@mui/material/Avatar";
 import { Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate, useLocation } from "react-router-dom";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
-  const { window, mobileOpen, handleDrawerToggle } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   const [listItems, setListItems] = useState([
     {
       id: 1,
       title: "Home",
       icons: <HomeIcon />,
+      color: location.pathname.includes("/home") ? "#26a7de" : "#000",
+      onClick: () => navigate("/home"),
     },
-
     {
       id: 2,
       title: "Explore",
       icons: <TagIcon />,
+      color: location.pathname.includes("explore") ? "#26a7de" : "#000",
+      onClick: () => navigate("/explore"),
     },
     {
       id: 3,
       title: "Notifications",
       icons: <NotificationsNoneOutlinedIcon />,
+      color: location.pathname.includes("notifications") ? "#26a7de" : "#000",
+      onClick: () => navigate("/notifications"),
     },
-
     {
       id: 4,
       title: "Messages",
       icons: <MailOutlineOutlinedIcon />,
+      color: location.pathname.includes("messages") ? "#26a7de" : "#000",
+      onClick: () => navigate("/messages"),
     },
     {
       id: 5,
       title: "Bookmark",
       icons: <BookmarkBorderOutlinedIcon />,
+      color: location.pathname.includes("bookmark") ? "#26a7de" : "#000",
+      onClick: () => navigate("/bookmark"),
     },
-
     {
       id: 6,
       title: "Lists",
       icons: <ListAltOutlinedIcon />,
+      color: location.pathname.includes("lists") ? "#26a7de" : "#000",
+      onClick: () => navigate("/lists"),
     },
     {
       id: 7,
@@ -70,22 +86,26 @@ function ResponsiveDrawer(props) {
           style={{
             width: 25,
             height: 25,
-            margin: -0,
-            marginTop: 2,
-            marginBottom: -6,
+            strokewidth: 3,
           }}
-        ></Avatar>
+          src={require("../assets/image2.jpg")}
+        />
       ),
+      color: location.pathname.includes("profile") ? "#26a7de" : "#000",
+      onClick: () => navigate("/profile"),
     },
     {
       id: 8,
       title: "More",
       icons: <MoreHorizRoundedIcon />,
+      color: location.pathname.includes("more") ? "#26a7de" : "#000",
+      onClick: () => navigate("/more"),
     },
     {
       id: 9,
       title: "Logout",
       icons: <LogoutIcon />,
+      onClick: () => navigate("/"),
     },
   ]);
 
@@ -149,17 +169,15 @@ function ResponsiveDrawer(props) {
     <Box>
       <CssBaseline />
 
-      {/* <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}
-        >
-          <MenuIcon style={{ overflow: "visible" }} />
-        </IconButton>
-      </Toolbar> */}
+      <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        edge="start"
+        onClick={handleDrawerToggle}
+        sx={{ mr: 0.5, display: { sm: "none" } }}
+      >
+        <MenuIcon style={{ overflow: "visible" }} />
+      </IconButton>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -212,12 +230,6 @@ function ResponsiveDrawer(props) {
   );
 }
 
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+
 
 export default ResponsiveDrawer;

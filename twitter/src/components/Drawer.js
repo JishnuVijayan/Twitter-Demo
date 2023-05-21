@@ -28,7 +28,7 @@ export default function Drawer() {
       title: "Home",
       icons: <HomeIcon />,
       color: location.pathname.includes("/home") ? "#26a7de" : "#000",
-      onClick: () => navigate("/"),
+      onClick: () => navigate("/home"),
     },
     {
       id: 2,

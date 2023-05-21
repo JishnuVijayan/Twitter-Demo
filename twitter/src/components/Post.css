@@ -13,12 +13,12 @@
 .header{
     position: sticky;
     top: 0;
-    color: rgba(255, 255, 255, 0.562);
+    color: rgba(255, 255, 255, 0.176);
     z-index: 100;
     border: 1px solid var(--twitter-bg);
     padding: 15px 20px;
     backdrop-filter: blur(5px);
-    width: 519px;
+    width: 88%;
     height: 50px;
 }
 .header > h2{color: black;}

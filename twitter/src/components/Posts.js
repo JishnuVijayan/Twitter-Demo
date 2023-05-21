@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
-
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -21,6 +20,7 @@ import Button from "@mui/material/Button";
 import "./Post.css";
 import FirstImage from "../assets/image.jpg";
 import SecondImage from "../assets/image2.jpg";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const posts = [
   {
@@ -47,19 +47,24 @@ export default function RecipeReviewCard() {
   const [expanded] = React.useState(false);
   const [Cards, setCards] = useState(posts);
   const isActive = useState(false);
+  const matchesMobile = useMediaQuery("(max-width:600px)");
 
   return (
     <>
-      <div className="header">
-        <h2>Home</h2>
-      </div>
-
-      <Grid className="post" item xs={5}>
-        <Box>
+      <h2
+        className={!matchesMobile ? "header" : ""}
+        style={{ color: "#000", marginTop: matchesMobile ? 0 : "" }}
+      >
+        Home
+      </h2>
+      <div className="post">
+        <Box sx={{ width: matchesMobile ? "95%" : "95%" }}>
           <div className="text">
             <TextField
-              style={{ verticalAlign: "center" }}
-              fullWidth
+              style={{
+                display: "flex",
+                width: matchesMobile ? "95%" : "100%",
+              }}
               label="What is happening!"
               id="fullWidth"
             />
@@ -69,7 +74,7 @@ export default function RecipeReviewCard() {
             <Button
               style={{
                 borderRadius: 25,
-                width: 150,
+                width: matchesMobile ? 70 : 150,
                 height: 45,
                 display: "flex",
                 alignItems: "center",
@@ -86,7 +91,7 @@ export default function RecipeReviewCard() {
           </div>
         </Box>
         {Cards.map((post) => (
-          <Card sx={{ maxWidth: 560 }}>
+          <Card sx={{ maxWidth: matchesMobile ? 320 : "95%" }}>
             <CardHeader
               avatar={
                 <Avatar
@@ -123,7 +128,7 @@ export default function RecipeReviewCard() {
             <Collapse in={expanded} timeout="auto" unmountOnExit></Collapse>
           </Card>
         ))}
-      </Grid>
+      </div>
     </>
   );
 }

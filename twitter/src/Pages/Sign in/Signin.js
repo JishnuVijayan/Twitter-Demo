@@ -48,7 +48,7 @@ export default function Login() {
             color: "#26a7de",
           }}
         >
-          Log in to Twitter
+          Sign on to Twitter
         </h2>
 
         <TextField
@@ -90,10 +90,10 @@ export default function Login() {
           variant="contained"
           onClick={() => navigate("/home")}
         >
-          Login
+          Signin
         </Button>
-        <Link to={"/signin"} style={{ color: "#26a7de" }}>
-          sign up for Twitter?{" "}
+        <Link to={"/"} style={{ color: "#26a7de" }}>
+          Login for Twitter?{" "}
         </Link>
       </Box>
     </div>
