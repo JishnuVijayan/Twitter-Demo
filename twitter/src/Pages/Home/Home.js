@@ -6,11 +6,13 @@ import "./Home.css";
 
 function App() {
   return (
-    <Grid className=".home" container>
-      <Drawer />
-      <Posts />
-      <Search>Hello World!</Search>
-    </Grid>
+    <div style={{ display: "flex" }}>
+      <Grid className=".home" container>
+        <Drawer />
+        <Posts />
+        <Search />
+      </Grid>
+    </div>
   );
 }
 
