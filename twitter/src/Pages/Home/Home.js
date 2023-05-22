@@ -14,11 +14,7 @@ function App() {
   const matchesMobile = useMediaQuery("(max-width:600px)");
   return matchesMobile ? (
     <div>
-      <ResponsiveDrawer
-        mobile={mobileOpen}
-        handl
-        DrawerToggle={handleDrawerToggle}
-      />
+      <ResponsiveDrawer mobile={mobileOpen} DrawerToggle={handleDrawerToggle} />
 
       <Grid container item xs={12} sx={{ overflowX: "unset" }}>
         {" "}
@@ -26,21 +22,18 @@ function App() {
       </Grid>
     </div>
   ) : (
-    <div>
-      <Grid container>
-        <Grid item xs={3}>
-          <Drawer />
-        </Grid>
-
-        <Grid item xs={5}>
-          <Posts />
-        </Grid>
-        <Grid item xs={4}>
-          <Search></Search>
-        </Grid>
+    <Grid container>
+      <Grid item xs={3}>
+        <Drawer />
       </Grid>
-    </div>
+
+      <Grid item xs={5}>
+        <Posts />
+      </Grid>
+      <Grid item xs={4}>
+        <Search></Search>
+      </Grid>
+    </Grid>
   );
 }
-
 export default App;
