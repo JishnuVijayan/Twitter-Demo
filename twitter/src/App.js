@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Explore from "./Pages/Explore/Explore";
@@ -11,10 +11,23 @@ import More from "./Pages/More/More";
 import "./App.css";
 import Login from "./Pages/Login/Login";
 import Signin from "./Pages/Sign in/Signin";
-
+import { auth } from "./Config/Firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  return (
+  const [isThereUser, setIsThereUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsThereUser(user);
+      } else {
+        setIsThereUser(null);
+      }
+    });
+  });
+
+  return isThereUser ? (
     <Routes>
       <Route path="/signin" element={<Signin />} />
       <Route path="/" element={<Login />} />
@@ -26,6 +39,11 @@ function App() {
       <Route path="lists" element={<Lists />} />
       <Route path="profile" element={<Profile />} />
       <Route path="more" element={<More />} />
+    </Routes>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/signin" element={<Signin />} />
     </Routes>
   );
 }
