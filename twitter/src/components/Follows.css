@@ -1,4 +1,5 @@
-.icon {
+/* .icon {
+
     font-size: 15px !important;
     padding-left: 5px !important;
     padding-top: 2px !important;
@@ -6,7 +7,6 @@
 }
 
 .follow_head {
-    display: flex;
     align-items: center;
 
 }
@@ -39,6 +39,7 @@
 
 .follow_text {
     padding-left: 10px;
+    flex-direction: row;
 }
 
 .btn {
@@ -54,5 +55,61 @@
 }
 
 .btn:hover {
+    background-color: rgb(52, 52, 52) !important;
+} */
+
+/* follow */
+.icon{
+    font-size: 15px !important;
+    padding-left: 5px !important;
+    padding-top: 2px !important;
+    color: var(--twitter-color);
+}
+.follow_head{
+    display: flex;
+    align-items: center;
+}
+.follow{
+    padding: 10px;
+}
+.tt{
+    color: #76838e;
+    font-weight: 450;
+    width: 20px;
+    height: 10px;
+}
+.follow1{
+    display: flex;
+}
+.follow:hover{
+    cursor: pointer;
+    background-color: #eaeff2;
+    border-radius: 5px;
+}
+.follow_text{
+    padding-left: 10px;
+}
+.btni{
+    margin-left: auto !important;
+    background-color: black !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    border-radius: 30px !important;
+    text-transform: inherit !important;
+    height: 33px !important;
+    width: 76px !important;
+    cursor: pointer;
+    background-color: #212121;
+    border-radius: 6px;
+    border: 2px solid #212121;
+    box-shadow: 6px 6px 10px rgba(0,0,0,1),
+    1px 1px 10px rgba(255, 255, 255, 0.6);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.35s;
+}
+.btn:hover{
     background-color: rgb(52, 52, 52) !important;
 }

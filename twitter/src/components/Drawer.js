@@ -17,10 +17,16 @@ import Button from "@mui/material/Button";
 import ListItemButton from "@mui/material/ListItemButton";
 import { useNavigate, useLocation } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { signOut } from "firebase/auth";
+import { auth } from "../Config/Firebase";
 
 export default function Drawer() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const logout = async () => {
+    signOut(auth);
+  };
 
   const [listItems, setListItems] = useState([
     {
@@ -92,7 +98,10 @@ export default function Drawer() {
       id: 9,
       title: "Logout",
       icons: <LogoutIcon />,
-      onClick: () => navigate("/"),
+      onClick: () => {
+        navigate("/");
+        logout();
+      },
     },
   ]);
 

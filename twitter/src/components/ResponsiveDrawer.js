@@ -24,6 +24,8 @@ import Avatar from "@mui/material/Avatar";
 import { Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate, useLocation } from "react-router-dom";
+import { auth } from "../Config/Firebase";
+import { signOut } from "firebase/auth";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -33,6 +35,9 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+  const logout = async () => {
+    signOut(auth);
   };
 
   const [listItems, setListItems] = useState([
@@ -105,7 +110,10 @@ function ResponsiveDrawer(props) {
       id: 9,
       title: "Logout",
       icons: <LogoutIcon />,
-      onClick: () => navigate("/"),
+      onClick: () => {
+        navigate("/");
+        logout();
+      },
     },
   ]);
 

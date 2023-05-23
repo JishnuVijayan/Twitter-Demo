@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -11,13 +11,36 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Input from "@mui/material/Input";
-
+import { auth, googleProvider } from "../../Config/Firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import GoogleIcon from "@mui/icons-material/Google";
 export default function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const navigate = useNavigate();
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signIn = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigate("/home");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate("/home");
+    } catch (err) {
+      console.error(err);
+    }
   };
   return (
     <div
@@ -48,14 +71,22 @@ export default function Login() {
             color: "#26a7de",
           }}
         >
-          Sign on to Twitter
+          Signin to Twitter
         </h2>
+        <TextField
+          fullWidth
+          id="fullWidth"
+          label="Username"
+          variant="standard"
+          onChange={(e) => setUserName(e.target.value)}
+        />
 
         <TextField
           fullWidth
           id="fullWidth"
-          label="phone,e-mail or username"
+          label="Email"
           variant="standard"
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <FormControl fullWidth variant="standard">
@@ -63,6 +94,7 @@ export default function Login() {
             Password
           </InputLabel>
           <Input
+            onChange={(e) => setPassword(e.target.value)}
             id="standard-adornment-password"
             type={showPassword ? "text" : "password"}
             endAdornment={
@@ -88,13 +120,18 @@ export default function Login() {
             marginTop: 2,
           }}
           variant="contained"
-          onClick={() => navigate("/home")}
+          onClick={signIn}
         >
           Signin
         </Button>
-        <Link to={"/"} style={{ color: "#26a7de" }}>
-          Login for Twitter?{" "}
-        </Link>
+        <div style={{ display: "inline", gap: 25 }}>
+          <Link to={"/"} style={{ color: "#26a7de" }}>
+            Login for Twitter?{" "}
+          </Link>
+          <IconButton onClick={signInWithGoogle}>
+            <GoogleIcon sx={{ color: "#4285F4" }} />
+          </IconButton>
+        </div>
       </Box>
     </div>
   );

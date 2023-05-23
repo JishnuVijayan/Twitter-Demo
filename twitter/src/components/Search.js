@@ -22,39 +22,40 @@ import {
 
 export default function Search() {
   return (
-    <Grid item xs={4}>
-      <div className="right_side">
-        <div className="searchbar">
-          <SearchIcon className="searchicon" />
-          <input type="text" placeholder="Search Here" />
-        </div>
+    <div className="right_side">
+      <div className="searchbar">
+        <SearchIcon className="searchicon" />
+        <input type="text" placeholder="Search Here" />
+      </div>
 
-        <div className="trending">
-          <h2>Whats happing</h2>
-          <hr />
+      <div className="trending">
+        <h2>What's happening</h2>
+        <hr />
+        <div className="tweets">
           <TwitterTweetEmbed tweetId="1653744708093452289" />
           <TwitterTweetEmbed tweetId="1653744708093452289" />
           <TwitterTweetEmbed tweetId="1653744708093452289" />
           <TwitterTweetEmbed tweetId="1653744708093452289" />
         </div>
+      </div>
 
-        <div className="widgets__container">
-          <h2 className="h2">Who to Follow </h2>
-          <Follows
-            avatar="https://pbs.twimg.com/profile_images/1525792228219621376/92apKFLn_400x400.jpg"
-            disname="Sayand Kk"
-            tag="sayand_kk"
-            link="https://twitter.com/sayand_kk"
-          />
-          <Follows
-            avatar="https://pbs.twimg.com/profile_images/1525792228219621376/92apKFLn_400x400.jpg"
-            disname="Sayand Kk"
-            tag="sayand_kk"
-            link="https://twitter.com/sayand_kk"
-          />
-        </div>
+      <div className="widgets__container">
+        <h2 className="h2">Who to Follow </h2>
+        <Follows
+          avatar="https://pbs.twimg.com/profile_images/1525792228219621376/92apKFLn_400x400.jpg"
+          disname="Sayand Kk"
+          tag="sayand_kk"
+          link="https://twitter.com/sayand_kk"
+        />
+        <Follows
+          avatar="https://pbs.twimg.com/profile_images/1525792228219621376/92apKFLn_400x400.jpg"
+          disname="Sayand Kk"
+          tag="sayand_kk"
+          link="https://twitter.com/sayand_kk"
+        />
+      </div>
 
-        {/* <div className="p1">
+      {/* <div className="p1">
           <h1> Who to follow</h1>
           <div className="profile">
             <div className="1">
@@ -114,7 +115,6 @@ export default function Search() {
             </div>
           </div>
         </div> */}
-      </div>
-    </Grid>
+    </div>
   );
 }
