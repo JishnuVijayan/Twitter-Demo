@@ -11,7 +11,7 @@ import More from "./Pages/More/More";
 import "./App.css";
 import Login from "./Pages/Login/Login";
 import Signin from "./Pages/Sign in/Signin";
-import { auth } from "./Config/Firebase";
+
 
 function App() {
   return (

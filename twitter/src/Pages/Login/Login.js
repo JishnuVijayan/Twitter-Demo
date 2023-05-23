@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -11,6 +11,8 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Input from "@mui/material/Input";
+import { auth } from "../../Config/Firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -18,6 +20,18 @@ export default function Login() {
   const navigate = useNavigate();
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const onLogin = async (e) => {
+    try {
+      e.preventDefault();
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/home");
+    } catch (err) {
+      navigate("/");
+      console.error(err);
+    }
   };
   return (
     <div
@@ -56,6 +70,7 @@ export default function Login() {
           id="fullWidth"
           label="phone,e-mail or username"
           variant="standard"
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <FormControl fullWidth variant="standard">
@@ -63,6 +78,7 @@ export default function Login() {
             Password
           </InputLabel>
           <Input
+            onChange={(e) => setPassword(e.target.value)}
             id="standard-adornment-password"
             type={showPassword ? "text" : "password"}
             endAdornment={
@@ -88,7 +104,7 @@ export default function Login() {
             marginTop: 2,
           }}
           variant="contained"
-          onClick={() => navigate("/home")}
+          onClick={onLogin}
         >
           Login
         </Button>

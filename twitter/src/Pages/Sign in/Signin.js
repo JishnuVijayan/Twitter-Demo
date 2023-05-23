@@ -14,7 +14,7 @@ import Input from "@mui/material/Input";
 import { auth, googleProvider } from "../../Config/Firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import GoogleIcon from "@mui/icons-material/Google";
-export default function Login() {
+export default function Signin(props) {
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const signIn = async () => {
+  const signIn = async (e) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       navigate("/home");
@@ -34,8 +34,9 @@ export default function Login() {
       console.error(err);
     }
   };
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = async (e) => {
     try {
+      e.preventDefault();
       await signInWithPopup(auth, googleProvider);
       navigate("/home");
     } catch (err) {
