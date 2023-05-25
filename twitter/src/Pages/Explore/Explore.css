@@ -1,0 +1,50 @@
+.Drawer {
+    width: 30px;
+
+}
+
+.exp {
+    margin-left: 328px;
+    color: gray;
+    background-color: white;
+    width: 13cm;
+    padding-top: 10px;
+
+
+
+
+
+}
+
+.searchbar {
+    margin-top: 10px;
+
+}
+
+.tabs {
+    display: inline-flex;
+    padding-left: 10px;
+    column-gap: 20px;
+    padding-top: 10px;
+}
+
+.buttons {
+    color: gray;
+}
+
+.setting_search {
+    display: inline-flex;
+
+}
+
+.settings {
+    margin-left: 230px;
+    margin-top: 20px;
+
+}
+
+.tabs_details {
+    width: 100%;
+    background-color: rgb(177, 175, 171);
+    margin-left: 10px;
+}
